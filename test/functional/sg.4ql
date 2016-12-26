@@ -1,0 +1,18 @@
+module sg:
+    relations:
+        flat(literal,literal).
+        up(literal,literal).
+        sg(literal,literal).
+        down(literal,literal).
+    rules:
+        sg(X,Y) :- flat(X,Y).
+        sg(X,Y) :- up(X,X1), sg(X1,Y1), down(Y1,Y).
+    facts:
+        up(a,b).
+        up(b,c).
+        flat(c,d).
+        down(d,e).
+        down(e,f).
+end.
+
+sg.sg(X,Y)?

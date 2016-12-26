@@ -1,0 +1,12 @@
+module m:
+    relations:
+        r(literal).
+        q(literal,literal).
+        p(literal).
+    rules:
+        r(X) :- p(X) | q(X,Z).
+    facts:
+        q(a,b).
+end.
+
+m.r(X)?

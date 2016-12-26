@@ -1,0 +1,13 @@
+// p q test from Chen & Warren
+module m:
+    relations:
+        p(literal).
+        q(literal).
+    rules:
+        q(X) :- p(X).
+        p(X) :- q(X).
+    facts:
+        q(a).
+end.
+
+m.q(X)?

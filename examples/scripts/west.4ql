@@ -1,0 +1,25 @@
+module m:
+    domains:
+        literal l.
+    relations:
+        weapon(l).
+        sells(l,l,l).
+        criminal(l).
+        hostile(l).
+        enemy(l,l).
+        owns(l,l).
+        missile(l).
+        american(l).
+    rules:
+        weapon(X) :- missile(X).
+        sells(west,X,nono) :- missile(X),owns(nono,X).
+        hostile(X) :- enemy(X,america).
+        criminal(X) :- american(X), weapon(Y), sells(X,Y,Z), hostile(Z).
+    facts:
+        missile(m).
+        owns(nono,m).
+        enemy(nono,america).
+        american(west).
+end.
+m.criminal(west)?
+

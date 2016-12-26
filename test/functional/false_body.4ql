@@ -1,0 +1,12 @@
+module m:
+    relations:
+        p(literal).
+    rules:
+        p(x) :- p(b).
+        p(y) :- !p(c).
+    facts:
+        !p(b).
+        p(c).
+end.
+
+m.p(X)?

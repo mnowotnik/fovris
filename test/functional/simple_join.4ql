@@ -1,0 +1,17 @@
+module m:
+    relations:
+        left(literal).
+        right(literal).
+        result(literal,literal).
+    rules:
+        result(X,Y) :- left(X),right(Y).
+    facts:
+        left(a).
+        left(b).
+        left(c).
+        right(a).
+        right(b).
+        right(c).
+end.
+
+m.result(X,Y)?

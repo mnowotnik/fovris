@@ -1,0 +1,28 @@
+module m:
+    relations:
+        r(integer).
+        q(integer).
+        d(integer,integer).
+        con(integer,integer).
+        tcg(integer,integer).
+        dummy(integer).
+    rules:
+        tcg(X,Y) :- con(X,Y).
+        tcg(X,Y) :- tcg(X,Z), con(Z,Y).
+        q(3) :- tcg(1,6).
+        r(1) :- q(X).
+        q(X) :- d(X,Y), q(Y).
+        con(2,3) :- dummy(1).
+    facts:
+        con(1,2).
+        con(3,4).
+        con(4,5).
+        con(5,6).
+        q(2).
+        d(1,2).
+        d(3,1).
+        dummy(1).
+        !dummy(1).
+end.
+
+m.r(X)?

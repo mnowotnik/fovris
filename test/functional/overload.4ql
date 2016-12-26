@@ -1,0 +1,12 @@
+module m:
+    relations:
+        state(literal).
+    rules:
+        state(wait) :- state(overloaded) | state(rest_time).
+        state(rest_time) :- state(wait).
+        !state(overloaded) :- state(rest_time).
+    facts:
+        state(overloaded).
+end.
+
+m.state(X)?

@@ -1,0 +1,116 @@
+fin.w(X)?
+
+module g:
+// a well-known two players game with states, a, b, . . . 
+// Each player moves between two states, if possible.
+// A player loses if he or she is in a state from which 
+// there are no moves. 
+//
+// We have relations:
+//   # move(X,Y) -- there is a move from X to Y
+//   # existsMoveFrom(X)  -- there is a move from X
+
+
+  domains:
+    literal state.
+  relations:
+    move(state,state).
+    existsMoveFrom(state).
+  rules:
+    existsMoveFrom(X) :- move(X,Y).
+  facts:
+    move(n8ovqk1,oordrmc).
+    move(n8ovqk1,gv9lckj).
+    move(n8ovqk1,o9kb5c0).
+    move(n8ovqk1,ca8lwjf).
+    move(n8ovqk1,ogrsoux).
+    move(n8ovqk1,gewabm9).
+    move(n8ovqk1,f7fadyc).
+    move(n8ovqk1,ak7w2la).
+    move(n8ovqk1,dwb657x).
+    move(n8ovqk1,cr8cihq).
+    move(n8ovqk1,gkp0y89).
+    move(n8ovqk1,plxgber).
+    move(n8ovqk1,rznup3m).
+    move(n8ovqk1,esusz9n).
+    move(n8ovqk1,zlqpcjr).
+    move(n8ovqk1,pygca8u).
+    move(n8ovqk1,tvs6slu).
+    move(n8ovqk1,rewpqpl).
+    move(n8ovqk1,pjegam5).
+    move(n8ovqk1,lgu2otj).
+    move(n8ovqk1,f2ypm7v).
+    move(n8ovqk1,sv1glh8).
+    move(n8ovqk1,cy36yhm).
+    move(n8ovqk1,tf16x46).
+    move(n8ovqk1,nuqohsb).
+    move(n8ovqk1,aj6n0bf).
+    move(n8ovqk1,gxoaseq).
+    move(n8ovqk1,k0mefiz).
+    move(n8ovqk1,r8vnrft).
+    move(n8ovqk1,em9fuz1).
+    move(n8ovqk1,nu3n7wn).
+    move(n8ovqk1,z6goyvx).
+    move(n8ovqk1,uwameax).
+    move(n8ovqk1,rz5fkmk).
+    move(n8ovqk1,vu6dmbq).
+    move(n8ovqk1,tyavk7d).
+    move(n8ovqk1,cvkzlee).
+    move(n8ovqk1,pbe8jpk).
+    move(n8ovqk1,x591af7).
+    move(n8ovqk1,ummai8i).
+    move(n8ovqk1,l1dq9mt).
+    move(n8ovqk1,bkf157x).
+    move(n8ovqk1,kwi41yu).
+    move(n8ovqk1,alq9dmx).
+    move(n8ovqk1,wou5vob).
+    move(n8ovqk1,j4iokzt).
+    move(n8ovqk1,upxxrec).
+    move(n8ovqk1,tb62qg2).
+    move(n8ovqk1,onhiseu).
+    move(n8ovqk1,t0cr8li).
+    move(n8ovqk1,ahkrbdk).
+    move(n8ovqk1,rj5t0z2).
+    move(n8ovqk1,l0nxrh7).
+    move(n8ovqk1,b1ys9co).
+    move(n8ovqk1,aqwb4qd).
+    move(n8ovqk1,tmsghwu).
+    move(n8ovqk1,ov1gkt3).
+    move(n8ovqk1,xoszycl).
+    move(n8ovqk1,wx2gdbo).
+    move(n8ovqk1,uk4snlt).
+    move(n8ovqk1,vnh8v4k).
+    move(n8ovqk1,zbu2sb1).
+    move(n8ovqk1,mcwgi43).
+    move(n8ovqk1,j1iu1r1).
+    move(n8ovqk1,n31s9fr).
+    move(n8ovqk1,xpwftdi).
+    move(n8ovqk1,yo4viz1).
+end.
+
+module h:
+//  # w(X) -- there is a winning strategy for a player
+//            starting in state X
+
+  domains:
+    literal state.
+  relations:
+    w(state).
+    move(state, state).
+  rules:
+    move(X,Y):- g.move(X,Y).
+    w(X) :- move(X,Y), g.existsMoveFrom(Y) in {unknown} |  move(X,Z), move(Z,V), w(V).
+end.
+
+module fin:
+// final module, closing relation w
+// query this module using `fin.w(X).' to find 
+// winning positions
+
+  domains:
+    literal state.
+  relations:
+    w(state).
+  rules:
+    w(X) :- g.move(X,Y), h.w(X), h.w(Y) in {unknown}.
+end.

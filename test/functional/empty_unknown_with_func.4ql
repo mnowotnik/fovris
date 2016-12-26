@@ -1,0 +1,19 @@
+module data:
+    relations:
+        a(literal).
+end.
+
+module m:
+    relations:
+        q(literal).
+        p(literal).
+    rules:
+        q(X) :- data.a(X) = unknown, p(X), X = b.
+    facts:
+        p(a).
+        p(b).
+        p(c).
+        
+end.
+
+m.q(X)?

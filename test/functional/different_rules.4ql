@@ -1,0 +1,14 @@
+module m:
+    relations:
+        r(integer).
+        q(integer).
+    rules:
+        r(1) :- q(X).
+        r(1) :- q(1).
+    facts:
+        q(2).
+        q(1).
+        !q(1).
+end.
+
+m.r(X)?

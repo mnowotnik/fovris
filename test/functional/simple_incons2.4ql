@@ -1,0 +1,11 @@
+module m:
+    relations:
+        q(literal).
+    rules:
+        q(c)  :- q(a).
+        !q(c) :- q(a).
+    facts:
+        q(a).
+end.
+
+m.q(X)?

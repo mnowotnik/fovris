@@ -1,0 +1,10 @@
+module m:
+    relations:
+        q(datetime,date,integer,literal,real,string,logic).
+    facts:
+        q(2016-02-20T20:31,2016-02-20,1,_cats_,-2.33,"^^\"&&foor",incons).
+        q(2016-02-20T20:12:01,2016-02-20,-2,_CatS_,2.33,"^^&&foor",false).
+        q(2016-02-20T20:31:02,2016-02-20,3,_cats_,-2.33,"quo\"ted",inconsistent).
+end.
+
+m.q(A,B,C,D,E,F,G)?

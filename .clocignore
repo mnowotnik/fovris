@@ -1,0 +1,4 @@
+src/QlScanner.re2c.cc
+src/QlParse.cc
+cli/CmdLineScanner.re2c.cc
+include/make_unique.hpp

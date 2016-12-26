@@ -1,0 +1,16 @@
+module p:
+    domains:
+        literal state.
+    relations:
+        parent(literal,literal).
+        ancestor(literal,literal).
+    rules:
+        ancestor(X,Y):- ancestor(X,Z),parent(Z,Y).
+        ancestor(X,Y):- parent(X,Y).
+    facts:
+        parent(alice,bob).
+        parent(alice,bill).
+        parent(bob,carol).
+        parent(carol,dennis).
+        parent(carol,david).
+end.

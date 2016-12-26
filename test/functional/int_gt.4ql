@@ -1,0 +1,13 @@
+module m:
+    relations:
+        number(integer).
+        gt(integer,integer).
+    rules:
+        !gt(X,Y):- X<Y, number(X),number(Y).
+        gt(X,Y):- X>Y, number(X),number(Y).
+    facts:
+        number(1).
+        number(2).
+end.
+
+m.gt(X,Y)?

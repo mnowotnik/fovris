@@ -1,0 +1,40 @@
+fin.win(X)?
+
+module g:
+  domains:
+    literal state.
+  relations:
+    move(state,state).
+    existsMoveFrom(state).
+  rules:
+    existsMoveFrom(X) :- move(X,Y).
+  facts:
+    move(b,c).
+    move(c,a).
+    move(a,b).
+    move(a,d).
+    move(d,e).
+    move(d,x).
+    move(x,f).
+    move(f,g).
+end.
+
+module h:
+  domains:
+    literal state.
+  relations:
+    winningStrategy(state).
+  rules:
+    winningStrategy(X) :- g.move(X,Y), g.existsMoveFrom(Y) in {unknown} | g.move(X,Y1), g.move(Y1,Z), winningStrategy(Z).
+end.
+
+module fin:
+  domains:
+    literal state.
+  relations:
+    win(state).
+  rules:
+    win(X) :- g.move(X,Y), h.winningStrategy(X), h.winningStrategy(Y) in {unknown}.
+    !win(X) :- g.move(X,Y),h.winningStrategy(X) in {unknown}.
+    !win(X) :- g.move(Y,X),h.winningStrategy(X) in {unknown}.
+end.

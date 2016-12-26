@@ -1,0 +1,10 @@
+module m:
+    relations:
+        q(literal,literal,literal).
+    facts:
+        q(a,b,c).
+        q(a,a,c).
+        q(a,c,c).
+end.
+
+m.q(X,X,Z)?

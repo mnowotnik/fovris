@@ -1,0 +1,95 @@
+.\" generated with Ronn/v0.7.3
+.\" http://github.com/rtomayko/ronn/tree/0.7.3
+.
+.TH "FOVRIS" "1" "December 2016" "" ""
+.
+.SH "NAME"
+\fBfovris\fR \- 4QL query language interpreter
+.
+.SH "SYNOPSIS"
+\fBfovris\fR [\fIoptions\fR] [\fIfile\fR \.\.\.]
+.
+.SH "DESCRIPTION"
+\fBfovris\fR is a limited 4QL shell\. It can be used interactively (default) or noninteractively\. Noninteractive usage is active when the \fB\-\-query\fR option is passed\. The results are then printed in the format specified by the \fB\-\-format\fR option\.
+.
+.SH "FILES"
+\fBfovris\fR expects valid 4QL files\. Basic 4QL file structure:
+.
+.IP "" 4
+.
+.nf
+
+module <name>:
+    domains:
+        <domain_type> <alias>\.
+        \.\.\.
+    relations:
+        <predicate>(<alias|domain_type>,\.\.\.)\.
+        \.\.\.
+    rules:
+        <predicate>(<term>,\.\.\.)\.
+        \.\.\.
+    facts:
+        <predicate>(<term>,\.\.\.)\.
+        \.\.\.
+    end\.
+.
+.fi
+.
+.IP "" 0
+.
+.P
+The domain_type can be one of:
+.
+.IP "" 4
+.
+.nf
+
+\- literal
+\- string
+\- datetime
+\- date
+\- integer
+\- real
+.
+.fi
+.
+.IP "" 0
+.
+.SH "OPTIONS"
+.
+.TP
+\fB\-f\fR, \fB\-\-format\fR \fIformat\fR
+Specify the query result format, where the \fIformat\fR value is one of the following: json, csv, 4ql(default)\.
+.
+.TP
+\fB\-q\fR, \fB\-\-query\fR \fIquery\fR
+Execute query and print the results to the standard output\. The \fB\-\-query\fR option can be specified multiple times\. The \fIquery\fR string must be in the following format: module\.predicate(term1,term2,\.\.\.)
+.
+.TP
+\fB\-i\fR, \fB\-\-import\fR \fIpath\fR
+Import a 4ql program from the file at the \fIpath\fR\. This option can be specified multiple times\. The import order is preserved\.
+.
+.SH "FOURQL COMMANDS"
+List of commands available at the prompt:
+.
+.TP
+\fB?\fR
+Print \fBhelp\fR\.
+.
+.TP
+\fBhelp\fR
+Print list of commands\.
+.
+.TP
+\fBimport\fR \fIpath\fR
+Import 4ql program from the given file\.
+.
+.TP
+\fBclear\fR
+Delete all modules\.
+.
+.TP
+\fIquery\fR
+Evaluate \fIquery\fR\.
+

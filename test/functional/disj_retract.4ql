@@ -1,0 +1,14 @@
+module m:
+    relations:
+        state(literal).
+        rel(literal).
+    rules:
+        state(hey) :- rel(bad) | state(good).
+        state(good) :- state(init).
+    facts:
+        state(init).
+        rel(bad).
+        !rel(bad).
+end.
+
+m.state(X)?

@@ -1,0 +1,17 @@
+// path test from Chen & Warren
+module m:
+    relations:
+        path(literal,literal).
+        edge(literal,literal).
+    rules:
+        path(X, Y) :- edge(X, Y).
+        path(X, Y) :- edge(X, Z), path(Z, Y).
+        path(X, Y) :- path(X, Z), edge(Z, Y).
+    facts:
+        edge(a, b).
+        edge(b, c).
+        edge(c, d).
+        edge(d, a).
+end.
+
+m.path(X,Y)?

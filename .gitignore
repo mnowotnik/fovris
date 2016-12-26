@@ -1,0 +1,51 @@
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+*.pyc
+
+/tags
+/build
+/compile_commands.json
+/.ycm_extra_conf.py
+/src/QlParse.cc
+/src/QlParse.c
+/src/QlParse.h
+/src/QlParse.out
+CMakeFiles
+CMakeCache.txt
+cmake_install.cmake
+/*.cmake
+dev_ql/sg/
+dev_ql/tc/
+dev_ql/join/
+/thesis/thesis.*
+!/thesis/thesis.tex
+!/thesis/thesis.bib
+/texput.log
