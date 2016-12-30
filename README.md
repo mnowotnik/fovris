@@ -24,13 +24,13 @@ After evaluation the database can be queried using a simple syntax:
 To see instructions for the interpreter check the manpage ( `man man/fovris.1` ) or
 print help `./fovris -h`.
 
-### Syntax
+## Syntax
 
 The syntax of a 4QL program doesn't differ much from the ones written for Datalog. The
 prevalent elements are still rules and facts. However, there are a few additions to
 support module-based architecture and four-valued logic.
 
-## Declaring a module
+### Declaring a module
 
 Every 4QL program consists of one or more modules. A module can contain:
 
@@ -66,7 +66,7 @@ After evaluating the `p` module, one can check whom is the Alice ancestor of by 
 p.(alice,X)
 ```
 
-## Literal negation
+### Literal negation
 
 Every literal can be negated. Be it in the body or in the head of a rule.
 
@@ -77,7 +77,7 @@ Every literal can be negated. Be it in the body or in the head of a rule.
 Negated literals will evaluate to false logical value, whereas normal literals
 will evaluate to true. Facts that are both true and false are considered to be *inconsistent*.
 
-## Builtin operators
+### Builtin operators
 
 FOVRiS supports basic comparison operators `> < >= <= != =`, which are basically binary function
 predicates. They can be defined instead of literals in the body of a rule like so:
@@ -115,7 +115,7 @@ in a safe literal within the body of a rule. For example:
 m.r(X,Y) in {unknown,incons}, a(X), b(Y)
 ```
 
-## Constant term types
+### Constant term types
 
 FOVRiS supports a few primitives to define constant terms:
 
