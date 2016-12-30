@@ -24,6 +24,11 @@ After evaluation the database can be queried using a simple syntax:
 To see instructions for the interpreter check the manpage ( `man man/fovris.1` ) or
 print help `./fovris -h`.
 
+### C++ library
+
+The C++ library API is currently undocumented. See `examples/code`, the cli module or check
+the headers in the `include/` directory.
+
 ## Syntax
 
 The syntax of a 4QL program doesn't differ much from the ones written for Datalog. The
@@ -133,11 +138,6 @@ FOVRiS supports a few primitives to define constant terms:
 ```
 rel(2016-12-31 12:30).
 ```
-
-## C++ library
-
-The C++ library API is currently undocumented. See `examples/code`, the cli module or check
-the headers in the `include/` directory.
 
 ## Building
 
