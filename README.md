@@ -68,7 +68,7 @@ end.
 After evaluating the `p` module, one can check whom is the Alice ancestor of by executing the following query:
 
 ```
-p.(alice,X)
+p.ancestor(alice,X)
 ```
 
 ### Literal negation
