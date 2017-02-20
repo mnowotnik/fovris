@@ -5,17 +5,16 @@ set(CMDLINE_PARSER_PATH
     "${PROJECT_SOURCE_DIR}/thirdparty/optionparser"
     )
 
-set(HEADERS
-    "CmdLineScanner.h"
-    "${CMDLINE_PARSER_PATH}/include"
-    "${LINENOISE_PATH}/include/linenoise.h")
-
 add_custom_command (
     OUTPUT "${CMAKE_CURRENT_SOURCE_DIR}/CmdLineScanner.re2c.cc"
     COMMAND re2c -i -o CmdLineScanner.re2c.cc CmdLineScanner.re 
     DEPENDS CmdLineScanner.re
     WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
 )
+
+set(HEADERS
+    CmdLineScanner.h
+    )
 
 set(SRC
     CmdLineScanner.re2c.cc

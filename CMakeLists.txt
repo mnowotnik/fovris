@@ -26,7 +26,7 @@ endif()
 
 SET(CMAKE_SKIP_BUILD_RPATH  FALSE)
 
-SET(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE) 
+SET(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
 
 SET(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib/${CMAKE_LIBRARY_ARCHITECTURE}/fovris:\\$ORIGIN/:\\$ORIGIN/../lib/${CMAKE_LIBRARY_ARCHITECTURE}/fovris")
 
@@ -45,6 +45,8 @@ include_directories(
     "${PROJECT_SOURCE_DIR}/thirdparty"
     "${PROJECT_SOURCE_DIR}"
     )
+
+set(THIRD_PARTY_DIR "${PROJECT_SOURCE_DIR}/thirdparty")
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
@@ -66,6 +68,7 @@ endforeach()
 
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/src)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/cli)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/server)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/examples/code)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/test)
 
