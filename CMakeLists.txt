@@ -20,8 +20,19 @@ set(CMAKE_CXX_FLAGS_RELEASE
 
 find_package(OpenMP)
 if (OPENMP_FOUND)
+    message( "OpenMP found. Will be used to support multithreading.")
     set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}")
     set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
+endif()
+
+find_package(Boost
+    COMPONENTS system)
+if (!BOOST_FOUND)
+    message( FATAL_ERROR "Boost library not found! Required to compile.")
+else()
+    message(${Boost_LIBRARIES})
+    message(${Boost_INCLUDE_DIRS})
+    include_directories(${Boost_INCLUDE_DIRS})
 endif()
 
 SET(CMAKE_SKIP_BUILD_RPATH  FALSE)
@@ -92,27 +103,6 @@ file(GLOB MANPAGES
 install(
   FILES ${MANPAGES}
   DESTINATION ${CMAKE_INSTALL_MANDIR}/man1)
-
-
-file(GLOB_RECURSE DATE_HEADERS
-  RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
-  thirdparty/date/**
-)
-
-install(
-  FILES ${DATE_HEADERS}
-  DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/thirdparty/date
-)
-
-file(GLOB_RECURSE BOOST_HEADERS
-  RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
-  thirdparty/boost_parts/boost/**
-)
-
-install(
-  FILES ${BOOST_HEADERS}
-  DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/boost
-)
 
 set(CPACK_PACKAGE_NAME "fovris")
 set(CPACK_PACKAGE_VENDOR "")

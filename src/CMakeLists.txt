@@ -52,7 +52,7 @@ set(SRC
     )
 
 find_program(RE2C_EXECUTABLE re2c)
-if(NOT RE2C_EXECUTABLE STREQUAL "RE2C_EXECUTABLE-NOTFOUND")
+if(NOT ${RE2C_EXECUTABLE} MATCHES "RE2C_EXECUTABLE-NOTFOUND")
     add_custom_command (
         OUTPUT "${CMAKE_CURRENT_SOURCE_DIR}/QlScanner.re2c.cc"
         COMMAND re2c -i -o QlScanner.re2c.cc QlScanner.re 
@@ -68,16 +68,17 @@ set(LIB_SRC
     ${Pred_SRC}
     )
 
-add_library(libfovris_shared SHARED ${LIB_SRC})
+add_library(libfovris ${LIB_SRC})
 
-install(TARGETS libfovris_shared 
+install(TARGETS libfovris 
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}/fovris
+    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}/fovris
     )
 
 install(DIRECTORY ${INCLUDE_DIR}
         DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/fovris)
 
-set_target_properties(libfovris_shared PROPERTIES
+set_target_properties(libfovris PROPERTIES
   POSITION_INDEPENDENT_CODE ON
   OUTPUT_NAME fovris
   )

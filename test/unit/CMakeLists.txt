@@ -15,4 +15,4 @@ include_directories(
 )
 
 add_executable(alltests EXCLUDE_FROM_ALL ${TEST_SRC})
-target_link_libraries(alltests libfovris_shared)
+target_link_libraries(alltests libfovris)

@@ -6,7 +6,7 @@ set(EXAMPLES
 
 foreach( example ${EXAMPLES} )
     add_executable(${example} ${example})
-    target_link_libraries(${example} libfovris_shared)
+    target_link_libraries(${example} libfovris)
     set_target_properties(
         ${example}
         PROPERTIES
