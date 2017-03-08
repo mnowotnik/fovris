@@ -41,12 +41,9 @@ include_directories(
     "${PROJECT_SOURCE_DIR}/src"
     "${PROJECT_SOURCE_DIR}/include"
     "${PROJECT_BINARY_DIR}/src"
-    "${PROJECT_SOURCE_DIR}/thirdparty/boost_parts"
     "${PROJECT_SOURCE_DIR}/thirdparty"
     "${PROJECT_SOURCE_DIR}"
     )
-
-set(THIRD_PARTY_DIR "${PROJECT_SOURCE_DIR}/thirdparty")
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
