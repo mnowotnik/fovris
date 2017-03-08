@@ -46,6 +46,7 @@ Every 4QL program consists of one or more modules. A module can contain:
 
 Below you can see the well-known Datalog program that can compute ancestor relation, but translated to 4QL. 
 Not much has changed except from explicitly stated term types in relations.
+
 ```
 module p:
     domains:
@@ -94,7 +95,7 @@ a(X,Y) :- b(X), c(Y), X<Y.
 Notice:
 
 Every variable in a operator (or any other function predicate) must be also present in a safe
- literal within the body of a rule. Safe literals define queries that yields finite set of facts.
+ literal within the body of a rule. Safe literals define queries that yield finite sets of facts.
 
 ## External literals
 
@@ -141,16 +142,24 @@ rel(2016-12-31 12:30).
 
 ## Building
 
+# Requirements
+
+- boost library (1.60+)
+- cmake 2.8+
+- C++11 compliant compiler
+
 Currently, only building on Linux systems in supported. It could be possible to compile on Mac OS X, but it has not been tested. Compilation on Windows would require a few tweaks to the CMakeLists.
 
-To build FOVRiS, you will need C++11 compliant compiler and CMake build tool >=2.8. Simply run the following command:
+# Build commands
 
+To build everything simple run in terminal:
 ```bash
 make CMAKE_BUILD_TYPE=Release
 ```
-If you don't have proper compiler on the PATH, you can set it explicitly with:
+
+If you don't have a proper compiler on the PATH, you can set it explicitly with:
 ```bash
-CXX=g++-5 make
+CXX=my-compiler make
 ```
 
 If you have Ninja build system installed, you 
