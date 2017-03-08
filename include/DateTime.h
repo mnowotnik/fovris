@@ -7,7 +7,7 @@
 #include <stdexcept>
 #include <string>
 
-#include "thirdparty/date/date.h"
+#include "date.h"
 
 namespace fovris {
 class Date;
