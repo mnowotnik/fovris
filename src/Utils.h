@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <iterator>
 #include <type_traits>
+#include <vector>
 
 #include "make_unique.hpp"
 namespace fovris {
