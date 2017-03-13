@@ -27,6 +27,7 @@ set(SRC
 include_directories(
     "${LINENOISE_PATH}/include"
     "${CMDLINE_PARSER_PATH}/include"
+    "${PROJECT_SOURCE_DIR}/include/fovris"
     )
 
 add_executable(fovris ${SRC} ${HEADERS})

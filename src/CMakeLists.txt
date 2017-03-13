@@ -8,7 +8,8 @@ if(USE_GCOV)
     set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} --coverage")
 endif()
 
-set(INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include/)
+set(INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include/fovris/)
+include_directories(${INCLUDE_DIR})
 
 add_custom_command (
     OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/QlParse.cc ${CMAKE_CURRENT_SOURCE_DIR}/QlParse.h

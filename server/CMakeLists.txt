@@ -4,6 +4,7 @@ set(CROW_PATH
 
 include_directories(
     ${CROW_PATH}
+    ${PROJECT_SOURCE_DIR}/include
     )
 
 set(SRC

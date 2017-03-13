@@ -1,5 +1,5 @@
-#include "Module.h"
-#include "Program.h"
+#include "fovris/Module.h"
+#include "fovris/Program.h"
 #include <iostream>
 
 int main() {
