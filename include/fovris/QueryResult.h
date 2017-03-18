@@ -30,7 +30,7 @@ class QueryResult {
     const_iterator end() const { return facts.end(); }
 
     int getTermsLength() { return termsLength; }
-    const Query &getQuery() { return query; }
+    const Query &getQuery() const { return query; }
 
     friend std::ostream &operator<<(std::ostream &os, const QueryResult &q);
     std::ostream &print(std::ostream &os, int indent) const;

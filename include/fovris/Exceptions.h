@@ -55,8 +55,8 @@ class ParsingError : public std::runtime_error {
     unsigned pos;
 
   public:
-    unsigned getLine() { return line; }
-    unsigned getPos() { return pos; }
+    unsigned getLine() const { return line; }
+    unsigned getPos() const { return pos; }
 
     ParsingError(const std::string &msg, unsigned line, unsigned pos)
         : runtime_error(msg), line(line), pos(pos) {}

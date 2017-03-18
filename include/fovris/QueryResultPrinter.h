@@ -6,10 +6,10 @@ class QueryResultPrinter {
 
     class Printer {
       protected:
-        QueryResult &result;
+        const QueryResult &result;
 
       public:
-        explicit Printer(QueryResult &r) : result(r) {}
+        explicit Printer(const QueryResult &r) : result(r) {}
     };
 
   public:

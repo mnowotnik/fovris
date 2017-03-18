@@ -13,7 +13,7 @@ bool hasQuotes(const std::string &str) {
 } // namespace
 
 std::ostream &operator<<(std::ostream &os, const QueryResultPrinter::Csv &q) {
-    QueryResult &result = q.result;
+    const QueryResult &result = q.result;
 
     os << '#' << result.getQuery() << std::endl;
 
@@ -35,7 +35,7 @@ std::ostream &operator<<(std::ostream &os, const QueryResultPrinter::Csv &q) {
     return os;
 }
 std::ostream &operator<<(std::ostream &os, const QueryResultPrinter::Ql &q) {
-    QueryResult &result = q.result;
+    const QueryResult &result = q.result;
     os << '#' << result.getQuery();
     os << std::endl;
     os << result;
@@ -43,7 +43,7 @@ std::ostream &operator<<(std::ostream &os, const QueryResultPrinter::Ql &q) {
 }
 
 std::ostream &operator<<(std::ostream &os, const QueryResultPrinter::Json &q) {
-    QueryResult &result = q.result;
+    const QueryResult &result = q.result;
 
     os << q.level(0) << '{' << std::endl;
     os << q.level(1) << "\"query\": \"" << result.getQuery() << "\","
