@@ -69,13 +69,17 @@
                             method: 'post',
                             type: 'html',
                             headers: { 'Access-Control-Allow-Origin': '*' ,
-                                       'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
-                                       'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
+                                       'Access-Control-Allow-Methods': 'GET, POST'
                             },
+                            data: inputEditor.getModel().getValue(),
                             crossOrigin: true,
                             error: function(err){
                                 if(err.status==429){
                                     outputEditor.setValue('Server overloaded. Wait a second and try again.');
+                                }
+                                if(err.status==400 && err.response){
+                                    outputEditor.setValue(err.response);
+                                    return;
                                 }
                                 outputEditor.setValue('Error while sending query.');
                             },
