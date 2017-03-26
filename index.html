@@ -5,10 +5,85 @@
         <title>fovris</title>
         <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
         <!--[if IE]>
-            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
     </head>
     <body>
-        body
+        <select id="examples-select">
+            <option value="">Select...</option>
+            <option value="examples/ancestors">Ancestors</option>
+        </select>
+        <button id="execute-btn">Execute</button>
+        <!-- <button id="link-btn">Link</button> -->
+
+        <div style="clear: both;"></div>
+        <div id="inputEditor" style="border: 1px solid grey; border-image: none; height: 500px; position: relative;"></div>
+        <div id="outputEditor" style="border: 1px solid grey; border-image: none; height: 500px; position: relative;"></div>
+        <div style="clear: both;"></div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/reqwest/2.0.5/reqwest.min.js"></script>
+        <script src="vendor/monaco-editor/min/vs/loader.js"></script>
+        <script>
+            (function(){
+                require.config({ paths: { 'vs': 'vendor/monaco-editor/min/vs' }});
+                require(['vs/editor/editor.main'], function() {
+                    var inputEditor = monaco.editor.create(document.getElementById('inputEditor'), {
+                        value: '',
+                        formatOnType: true
+                    });
+
+                    var outputEditor = monaco.editor.create(document.getElementById('outputEditor'), {
+                        value: '',
+                        readOnly: true
+                    });
+
+                    var examplesSlct = document.getElementById('examples-select');
+                    var executeBtn = document.getElementById('execute-btn');
+                    //var shareBtn = document.getElementById('share-btn');
+                    
+
+                    function setInputModelToEx(url){
+                        reqwest({
+                            url:url,
+                            method: 'get',
+                            type: 'html',
+                            error:function(err){},
+                            success:function(resp){
+                                inputEditor.getModel().setValue(resp);
+                            }});
+                    }
+
+                    setInputModelToEx('examples/ancestors');
+
+                    examplesSlct.onchange = function(){
+                        var selectedEx = examplesSlct.options[examplesSlct.selectedIndex].value;
+                        if(selectedEx==''){
+                            return;
+                        }
+                        setInputModelToEx(selectedEx);
+                    };
+
+                    executeBtn.onclick = function(){
+                        reqwest({
+                            url: 'http://127.0.0.1:9000/query',
+                            method: 'post',
+                            type: 'html',
+                            headers: { 'Access-Control-Allow-Origin': '*' ,
+                                       'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
+                                       'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
+                            },
+                            crossOrigin: true,
+                            error: function(err){
+                                if(err.status==429){
+                                    outputEditor.setValue('Server overloaded. Wait a second and try again.');
+                                }
+                                outputEditor.setValue('Error while sending query.');
+                            },
+                            success:function(resp){outputEditor.setValue(resp);}
+                        });
+                    };
+                });
+            })()
+        </script>
     </body>
 </html>
