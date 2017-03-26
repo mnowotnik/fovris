@@ -45,17 +45,20 @@ int main(int argc, char **argv) {
     CROW_ROUTE(app, "/query")
         .methods("POST"_method)([](const crow::request &req) {
             fovris::QlDeserializer sp;
+            crow::response resp;
+            resp.add_header("Access-Control-Allow-Origin", "*");
             try {
                 sp.parse(req.body);
             } catch (fovris::ParsingError &e) {
-                return crow::response(400, makeErrorMessage(e));
+                resp.body = makeErrorMessage(e);
+                resp.code = 400;
+                return resp;
             }
             fovris::Program program(fovris::Algorithm::Seminaive);
             for (auto &module : sp.getModules()) {
                 program.addModule(module);
             }
             program.evaluate();
-            crow::response resp;
 
             for (auto &query : sp.getQueries()) {
                 std::ostringstream ss;
