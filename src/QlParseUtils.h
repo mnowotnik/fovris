@@ -48,7 +48,7 @@ struct ResolveInfo {
 
 ResolveInfo resolveDomains(
     const DomainsMap &domains,
-    const std::vector<PRelationDef> &p_relations) throw(std::out_of_range) {
+    const std::vector<PRelationDef> &p_relations) {
     auto relations = std::make_unique<std::vector<RelationDef>>();
 
     if (p_relations.empty()) {

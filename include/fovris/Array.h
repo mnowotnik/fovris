@@ -56,14 +56,14 @@ template <typename T> class Array {
     size_type length() const { return size_; }
     size_type size() const { return size_; }
 
-    const T &at(size_type i) const throw(std::out_of_range) {
+    const T &at(size_type i) const {
         if (i >= size_) {
             throw std::out_of_range{"Array index out of range!"};
         }
         return store_[i];
     }
 
-    T &at(size_type i) throw(std::out_of_range) {
+    T &at(size_type i) {
         if (i >= size_) {
             throw std::out_of_range{"Array index out of range!"};
         }

@@ -62,7 +62,7 @@ class Term {
 
     Term(Term &&that) noexcept;
 
-    Term(const Term &that) throw(std::bad_alloc);
+    Term(const Term &that);
 
     Term &operator=(Term that);
 

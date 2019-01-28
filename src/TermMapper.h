@@ -17,9 +17,9 @@ class TermMapper {
   public:
     unsigned internTerm(const Term &term);
 
-    unsigned queryTermId(const Term &term) const throw(std::out_of_range);
+    unsigned queryTermId(const Term &term) const;
 
-    Term queryTerm(unsigned id, TermType type) const throw(std::out_of_range);
+    Term queryTerm(unsigned id, TermType type) const;
 };
 } // fovris
 #endif /* end of include guard: DATAMAPPER_H_ZIDLKRYB */

@@ -11,7 +11,7 @@ set(TEST_SRC
 
 include_directories(
     "${PROJECT_SOURCE_DIR}/test/unit"
-    "${PROJECT_SOURCE_DIR}"
+    "${PROJECT_SOURCE_DIR}/include/fovris"
 )
 
 add_executable(alltests EXCLUDE_FROM_ALL ${TEST_SRC})

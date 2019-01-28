@@ -3,7 +3,7 @@
 #include <stdexcept>
 #include <utility>
 
-#include "Utils/Print.h"
+#include "Print.h"
 
 namespace fovris {
 

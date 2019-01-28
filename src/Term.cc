@@ -78,7 +78,7 @@ Term::Term(Term &&that) noexcept : val_(that.val_), type(that.type) {
     }
 }
 
-Term::Term(const Term &that) throw(std::bad_alloc) : type(that.type) {
+Term::Term(const Term &that) : type(that.type) {
     if (isStrType(*this)) {
         val_.s_ = new std::string(*that.val_.s_);
     } else {

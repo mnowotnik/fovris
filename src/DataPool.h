@@ -45,7 +45,7 @@ template <typename T> class DataPool {
     const_iterator begin() const { return storageIdMap_.begin(); }
     const_iterator end() const { return storageIdMap_.end(); }
 
-    const T &get(unsigned id) const throw(std::out_of_range) {
+    const T &get(unsigned id) const {
         return storage_.at(id);
     }
 
@@ -53,7 +53,7 @@ template <typename T> class DataPool {
         return storageIdMap_.find(MapKey(t)) != storageIdMap_.end();
     }
 
-    unsigned queryId(const T &t) const throw(std::out_of_range) {
+    unsigned queryId(const T &t) const {
         return storageIdMap_.at(MapKey(t));
     }
 

@@ -24,8 +24,7 @@ unsigned TermMapper::internTerm(const Term &term) {
     }
 }
 
-Term TermMapper::queryTerm(unsigned id, TermType type) const
-    throw(std::out_of_range) {
+Term TermMapper::queryTerm(unsigned id, TermType type) const {
     switch (type) {
         case TermType::Var:
         case TermType::Id:
@@ -46,8 +45,7 @@ Term TermMapper::queryTerm(unsigned id, TermType type) const
     }
 }
 
-unsigned TermMapper::queryTermId(const Term &term) const
-    throw(std::out_of_range) {
+unsigned TermMapper::queryTermId(const Term &term) const {
     switch (term.getType()) {
         case TermType::Var:
         case TermType::String:
