@@ -46,8 +46,6 @@ SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 #remove -rdynamic
 set(CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS "")
 
-remove_cxx_flag("-O3")
-
 include_directories(
     "${PROJECT_SOURCE_DIR}/src"
     "${PROJECT_SOURCE_DIR}/include"
