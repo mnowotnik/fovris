@@ -116,10 +116,13 @@ int main(int argc, char **argv) {
         .methods("OPTIONS"_method, "POST"_method)([](const crow::request &req) {
             if (req.method == "POST"_method) {
                 return queryPost(req);
-            } else {
-                return queryOptions(req);
-            }
-            return crow::response{};
+            } 
+            return queryOptions(req);
+        });
+
+    CROW_ROUTE(app, "/healthz")
+        .methods("GET"_method)([](const crow::request &req) {
+            return "ok";
         });
 
     CROW_LOG_INFO << "Starting server: " << addr << ":" << port;
