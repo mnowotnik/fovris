@@ -150,6 +150,8 @@ rel(2016-12-31 12:30).
 
 Currently, only building on Linux systems in supported. It could be possible to compile on Mac OS X, but it has not been tested. Compilation on Windows would require a few tweaks to the CMakeLists.
 
+Note: There seems to be a bug in gcc 8.1 that makes it impossible to compile the crow library. Please use clang instead or newer version of gcc.
+
 # Build commands
 
 To build everything simple run in terminal:
