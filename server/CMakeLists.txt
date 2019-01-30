@@ -11,7 +11,7 @@ set(SRC
     fovrisd.cc)
 
 add_executable(fovrisd ${SRC})
-target_link_libraries(fovrisd libfovris ${Boost_LIBRARIES})
+target_link_libraries(fovrisd -lpthread -lm libfovris ${Boost_LIBRARIES})
 
 install(TARGETS fovrisd
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}

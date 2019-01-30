@@ -17,7 +17,7 @@ class KBRuleLiteral : public KBLiteral {
     // convenience
     KBRuleLiteral(unsigned relId, std::initializer_list<KBTerm> terms,
                   TruthValueSet lSet)
-        : KBRuleLiteral(relId, {terms}, lSet) {}
+        : KBRuleLiteral(relId, std::vector<KBTerm>{terms}, lSet) {}
 
     // convenience
     KBRuleLiteral(unsigned relId, std::initializer_list<KBTerm> terms,
